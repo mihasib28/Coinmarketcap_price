@@ -8,7 +8,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 app.get("/api/coins", async (req, res) => {
-  const symbols = req.query.symbols || "BTC,ETH";
+  const symbols = req.query.symbols || "BTC,ATC,ETH,BNB";
 
   try {
     const response = await axios.get(
