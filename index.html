@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Market</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial }
+    .grid { display:flex; gap:15px; flex-wrap:wrap }
+    .card {
+      background:#020617;
+      padding:15px;
+      border-radius:10px;
+      width:220px;
+    }
+    img { width:32px }
+  </style>
+</head>
+<body>
+
+<h2>Live Crypto Prices</h2>
+<div class="grid" id="coins"></div>
+
+<script>
+async function loadCoins() {
+  const res = await fetch(
+    "http://localhost:3000/api/coins?symbols=BTC,ETH,BNB,SOL,ATC,DOGE"
+  );
+  const data = await res.json();
+
+  const container = document.getElementById("coins");
+  container.innerHTML = "";
+
+  data.forEach(coin => {
+    container.innerHTML += `
+      <div class="card">
+        <img src="${coin.logo}" />
+        <h3>${coin.name} (${coin.symbol})</h3>
+        <p>$${coin.price.toFixed(3)}</p>
+        <p>24h: ${coin.change24h.toFixed(2)}%</p>
+      </div>
+    `;
+  });
+}
+
+loadCoins();
+</script>
+
+</body>
+</html>
