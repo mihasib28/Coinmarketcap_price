@@ -20,3 +20,5 @@ dist/
 build/
 frontend/
 frontend
+
+index.html
