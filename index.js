@@ -24,12 +24,6 @@ app.get("/api/coins", async (req, res) => {
       }
     );
 
-    app.use(
-      cors({
-        origin: "*",
-      })
-    );
-
     const coins = Object.values(response.data.data).map((coin) => ({
       id: coin.id,
       name: coin.name,
@@ -37,7 +31,7 @@ app.get("/api/coins", async (req, res) => {
       price: coin.quote.USD.price,
       change24h: coin.quote.USD.percent_change_24h,
       marketCap: coin.quote.USD.market_cap,
-      logo: `https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png`,
+      logo: `https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png`
     }));
 
     res.json(coins);
