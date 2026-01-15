@@ -22,7 +22,7 @@
 <script>
 async function loadCoins() {
   const res = await fetch(
-    "http://localhost:8000/api/coins?symbols=BTC,ETH,BNB,SOL,ATC,DOGE"
+    "http://localhost:8000/api/coins?symbols=ATC"
   );
   const data = await res.json();
 
